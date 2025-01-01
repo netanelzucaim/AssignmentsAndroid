@@ -1,8 +1,10 @@
 package com.idz.colman24class2
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -28,6 +30,9 @@ class AddStudentActivity : AppCompatActivity() {
 
         val nameEditText: EditText = findViewById(R.id.add_student_activity_name_edit_text)
         val idEditText: EditText = findViewById(R.id.add_student_activity_id_edit_text)
+        val phoneEditText: EditText = findViewById(R.id.add_student_activity_phone_edit_text)
+        val addressEditText: EditText = findViewById(R.id.add_student_activity_address_edit_text)
+        val enabledCheckBox: CheckBox = findViewById(R.id.add_student_activity_enabled_check_box)
 
         val savedMessageTextView: TextView = findViewById(R.id.add_student_activity_save_message_text_view)
 
@@ -38,7 +43,7 @@ class AddStudentActivity : AppCompatActivity() {
         }
 
         saveButton.setOnClickListener {
-            val student = Student(nameEditText.text.toString(), idEditText.text.toString(),avatarUrl = "", isChecked = false)
+            val student = Student(nameEditText.text.toString(), idEditText.text.toString(),avatarUrl = "", phoneEditText.text.toString(),addressEditText.text.toString(),enabledCheckBox.isChecked )
             Model.shared.students.add(student)
             savedMessageTextView.text = "Name: ${nameEditText.text} ID: ${idEditText.text} is saved!!!..."
 
