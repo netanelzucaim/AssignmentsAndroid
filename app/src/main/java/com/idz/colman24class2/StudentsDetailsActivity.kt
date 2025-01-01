@@ -1,9 +1,10 @@
 package com.idz.colman24class2
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,36 +22,36 @@ class StudentsDetailsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-val student = Student(
-    name = "1",
-    id = "1",
-    avatarUrl = "1",
-    phone = "1",
-    address = "1",
-    isChecked = false
-)
+        val intent = intent
+        val id = intent.getStringExtra("student_id")
+        val name = intent.getStringExtra("student_name")
+        val address = intent.getStringExtra("student_address")
+        val phone = intent.getStringExtra("student_phone")
+        val enabled = intent.getBooleanExtra("student_enabled",false)
+        val student = Student(
+            name = name!!,
+            id = id!!,
+            phone = phone!!,
+            address = address!!,
+            isChecked = enabled
+        )
         findViewById<TextView>(R.id.students_details_activity_address_text_view).text = student.address
         findViewById<TextView>(R.id.students_details_activity_name_text_view).text = student.name
         findViewById<TextView>(R.id.students_details_activity_id_text_view).text = student.id
         findViewById<TextView>(R.id.students_details_activity_phone_text_view).text = student.phone
         findViewById<CheckBox>(R.id.students_details_activity_enabled_check_box).isChecked = student.isChecked
 
-//        findViewById<TextView>(R.id.students_details_activity_id_text_view).text = student.id
-//        findViewById<TextView>(R.id.students_details_activity_phone_text_view).text = student.phone
-//        findViewById<TextView>(R.id.students_details_activity_address_text_view).text = student.address
-////        findViewById(R.id.students_details_activity_enabled_check_box).text = student.name
-////
 
-//        val saveButton: Button = findViewById(R.id.add_student_activity_save_button)
-//        val cancelButton: Button = findViewById(R.id.add_student_activity_cancel_button)
-//
-//
-//        cancelButton.setOnClickListener {
-//            finish()
-//        }
-//
-//        saveButton.setOnClickListener {
-//        }
+        val editButton: Button = findViewById(R.id.students_details_activity_edit_button)
+        editButton.setOnClickListener {
+            val intent = Intent(this@StudentsDetailsActivity, EditStudentsActivity::class.java)
+            intent.putExtra("student_id", student?.id)
+            intent.putExtra("student_name", student?.name)
+            intent.putExtra("student_address", student?.address)
+            intent.putExtra("student_phone", student?.phone)
+            intent.putExtra("student_enabled", student?.isChecked)
+            startActivity(intent)
+            Log.d("TAG", "On student clicked name: ${student?.name} open edit activity")
+        }
     }
 }

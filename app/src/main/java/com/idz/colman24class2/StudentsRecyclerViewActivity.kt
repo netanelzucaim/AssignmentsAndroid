@@ -56,6 +56,14 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             }
 
             override fun onItemClick(student: Student?) {
+
+                val intent = Intent(this@StudentsRecyclerViewActivity, StudentsDetailsActivity::class.java)
+                intent.putExtra("student_id", student?.id)
+                intent.putExtra("student_name", student?.name)
+                intent.putExtra("student_address", student?.address)
+                intent.putExtra("student_phone", student?.phone)
+                intent.putExtra("student_enabled", student?.isChecked)
+                startActivity(intent)
                 Log.d("TAG", "On student clicked name: ${student?.name}")
             }
         }

@@ -30,6 +30,10 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".EditStudentsActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".AddStudentActivity"
             android:exported="false" />
         <activity

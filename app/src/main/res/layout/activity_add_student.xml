@@ -117,7 +117,7 @@
 
 
     <Button
-        android:id="@+id/add_student_activity_cancel_button"
+        android:id="@+id/students_details_activity_edit_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -137,7 +137,7 @@
         android:layout_marginBottom="40dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/add_student_activity_cancel_button"
+        app:layout_constraintEnd_toStartOf="@+id/students_details_activity_edit_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 

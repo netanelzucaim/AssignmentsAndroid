@@ -13,7 +13,6 @@ class Model private constructor() {
             val student = Student(
                 name = "Name $i",
                 id = "Student ID: $i",
-                avatarUrl = "",
                 phone = "Phone: $i",
                 address = "Address: $i",
                 isChecked = false

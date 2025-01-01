@@ -26,7 +26,7 @@ class AddStudentActivity : AppCompatActivity() {
         }
 
         val saveButton: Button = findViewById(R.id.add_student_activity_save_button)
-        val cancelButton: Button = findViewById(R.id.add_student_activity_cancel_button)
+        val cancelButton: Button = findViewById(R.id.students_details_activity_edit_button)
 
         val nameEditText: EditText = findViewById(R.id.add_student_activity_name_edit_text)
         val idEditText: EditText = findViewById(R.id.add_student_activity_id_edit_text)
@@ -43,7 +43,7 @@ class AddStudentActivity : AppCompatActivity() {
         }
 
         saveButton.setOnClickListener {
-            val student = Student(nameEditText.text.toString(), idEditText.text.toString(),avatarUrl = "", phoneEditText.text.toString(),addressEditText.text.toString(),enabledCheckBox.isChecked )
+            val student = Student(nameEditText.text.toString(), idEditText.text.toString(),phoneEditText.text.toString(),addressEditText.text.toString(),enabledCheckBox.isChecked )
             Model.shared.students.add(student)
             savedMessageTextView.text = "Name: ${nameEditText.text} ID: ${idEditText.text} is saved!!!..."
 
