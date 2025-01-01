@@ -1,10 +1,12 @@
 package com.idz.colman24class2
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -59,6 +61,11 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         }
 
         recyclerView.adapter = adapter
+        val addStudentButton: Button = findViewById(R.id.students_recycler_view_activity_add_student_button)
+        addStudentButton.setOnClickListener {
+            val intent = Intent(this, AddStudentActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -75,7 +82,7 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         init {
             nameTextView = itemView.findViewById(R.id.student_row_name_text_view)
             idTextView = itemView.findViewById(R.id.student_row_id_text_view)
-            checkBox = itemView.findViewById(R.id.student_row_check_box)
+            checkBox = itemView.findViewById(R.id.check_box)
 
             checkBox?.apply {
                 setOnClickListener { view ->
