@@ -1,5 +1,6 @@
 package com.idz.colman24class2
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.idz.colman24class2.model.Model
+import com.idz.colman24class2.model.Student
 
 class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,11 +32,16 @@ class AddStudentActivity : AppCompatActivity() {
         val savedMessageTextView: TextView = findViewById(R.id.add_student_activity_save_message_text_view)
 
         cancelButton.setOnClickListener {
+            val intent = Intent(this, StudentsRecyclerViewActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
         saveButton.setOnClickListener {
+            val student = Student(nameEditText.text.toString(), idEditText.text.toString(),avatarUrl = "", isChecked = false)
+            Model.shared.students.add(student)
             savedMessageTextView.text = "Name: ${nameEditText.text} ID: ${idEditText.text} is saved!!!..."
+
         }
     }
 }
