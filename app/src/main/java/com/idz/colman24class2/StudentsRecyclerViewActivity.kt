@@ -77,7 +77,7 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val toolbar: Toolbar = findViewById(R.id.students_recycler_view_toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Students List"
         supportActionBar?.apply {

@@ -38,7 +38,7 @@ class AddStudentActivity : AppCompatActivity() {
 
         val savedMessageTextView: TextView = findViewById(R.id.add_student_activity_save_message_text_view)
 
-        val toolbar: Toolbar = findViewById(R.id.add_student_activity_toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "New Students"
         supportActionBar?.apply {
@@ -46,11 +46,11 @@ class AddStudentActivity : AppCompatActivity() {
             setDisplayShowHomeEnabled(true) // Ensure back button is functional
         }
 
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                finish() // Or any custom logic for back navigation
+         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+             override fun handleOnBackPressed() {
+               finish()
             }
-        })
+         })
 
         cancelButton.setOnClickListener {
             val intent = Intent(this, StudentsRecyclerViewActivity::class.java)

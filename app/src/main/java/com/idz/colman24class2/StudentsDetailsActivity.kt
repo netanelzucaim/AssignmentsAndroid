@@ -42,7 +42,7 @@ class StudentsDetailsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.students_details_activity_id_text_view).text = student.id
         findViewById<TextView>(R.id.students_details_activity_phone_text_view).text = student.phone
         findViewById<CheckBox>(R.id.students_details_activity_enabled_check_box).isChecked = student.isChecked
-        val toolbar: Toolbar = findViewById(R.id.students_details_activity_toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Students Details"
         supportActionBar?.apply {
