@@ -15,6 +15,7 @@ import com.idz.colman24class2.model.Model
 import com.idz.colman24class2.model.Student
 import androidx.appcompat.widget.Toolbar
 import androidx.activity.OnBackPressedCallback
+import kotlinx.coroutines.delay
 
 class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +63,9 @@ class AddStudentActivity : AppCompatActivity() {
             val student = Student(nameEditText.text.toString(), idEditText.text.toString(),phoneEditText.text.toString(),addressEditText.text.toString(),enabledCheckBox.isChecked )
             Model.shared.students.add(student)
             savedMessageTextView.text = "Name: ${nameEditText.text} ID: ${idEditText.text} is saved!!!..."
+            val intent = Intent(this, StudentsRecyclerViewActivity::class.java)
+            startActivity(intent)
+            finish()
 
         }
     }
