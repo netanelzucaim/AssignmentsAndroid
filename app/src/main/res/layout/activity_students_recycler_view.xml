@@ -7,11 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".StudentsRecyclerViewActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/students_recycler_view_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/students_recycler_view"
         android:layout_width="405dp"
         android:layout_height="0dp"
         android:layout_marginBottom="69dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintBottom_toTopOf="@+id/students_recycler_view_activity_add_student_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

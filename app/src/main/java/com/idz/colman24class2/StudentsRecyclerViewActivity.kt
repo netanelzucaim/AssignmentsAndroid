@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.idz.colman24class2.model.Model
 import com.idz.colman24class2.model.Student
+import androidx.appcompat.widget.Toolbar
+import androidx.activity.OnBackPressedCallback
 
 interface OnItemClickListener {
     fun onItemClick(position: Int)
@@ -75,6 +77,25 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val toolbar: Toolbar = findViewById(R.id.students_recycler_view_toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Students List"
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true) // Show the back button
+            setDisplayShowHomeEnabled(true) // Ensure back button is functional
+        }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish() // Or any custom logic for back navigation
+            }
+        })
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish() // Or navigate back as needed
+        return true
     }
 
     class StudentViewHolder(

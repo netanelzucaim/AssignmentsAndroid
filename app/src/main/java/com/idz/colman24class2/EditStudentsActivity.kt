@@ -12,6 +12,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.idz.colman24class2.model.Model
 import com.idz.colman24class2.model.Student
+import androidx.appcompat.widget.Toolbar
+import androidx.activity.OnBackPressedCallback
 
 class EditStudentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +48,19 @@ class EditStudentsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.edit_students_activity_phone_text_view).text = student.phone
         findViewById<CheckBox>(R.id.edit_students_activity_enabled_check_box).isChecked = student.isChecked
 
+        val toolbar: Toolbar = findViewById(R.id.edit_students_activity_toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Edit Students"
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true) // Show the back button
+            setDisplayShowHomeEnabled(true) // Ensure back button is functional
+        }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish() // Or any custom logic for back navigation
+            }
+        })
 
         cancelButton.setOnClickListener {
             val intent = Intent(this, StudentsRecyclerViewActivity::class.java)
@@ -74,5 +89,10 @@ class EditStudentsActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish() // Or navigate back as needed
+        return true
     }
 }
