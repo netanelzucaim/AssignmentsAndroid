@@ -13,6 +13,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.idz.colman24class2.model.Model
 import com.idz.colman24class2.model.Student
+import androidx.appcompat.widget.Toolbar
+import androidx.activity.OnBackPressedCallback
 
 class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,20 @@ class AddStudentActivity : AppCompatActivity() {
 
         val savedMessageTextView: TextView = findViewById(R.id.add_student_activity_save_message_text_view)
 
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "New Students"
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true) // Show the back button
+            setDisplayShowHomeEnabled(true) // Ensure back button is functional
+        }
+
+         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+             override fun handleOnBackPressed() {
+               finish()
+            }
+         })
+
         cancelButton.setOnClickListener {
             val intent = Intent(this, StudentsRecyclerViewActivity::class.java)
             startActivity(intent)
@@ -48,5 +64,10 @@ class AddStudentActivity : AppCompatActivity() {
             savedMessageTextView.text = "Name: ${nameEditText.text} ID: ${idEditText.text} is saved!!!..."
 
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish() // Or navigate back as needed
+        return true
     }
 }

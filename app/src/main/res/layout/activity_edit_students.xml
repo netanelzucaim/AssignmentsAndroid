@@ -9,12 +9,14 @@
     tools:layout_editor_absoluteX="-50dp"
     tools:layout_editor_absoluteY="-68dp">
 
+    <include layout="@layout/activity_toolbar" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="80dp"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

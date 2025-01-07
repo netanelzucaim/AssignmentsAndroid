@@ -7,11 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".AddStudentActivity">
 
+    <include layout="@layout/activity_toolbar" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="428dp"
         android:layout_height="278dp"
         android:scaleType="centerInside"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
